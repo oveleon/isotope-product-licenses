@@ -1,0 +1,43 @@
+{
+  "name":"oveleon/isotope-product-licenses",
+  "type":"contao-bundle",
+  "description":"Product-Licenses integration for Isotope",
+  "keywords":["contao","isotope","licenses"],
+  "homepage":"https://www.oveleon.de/",
+  "license":"MIT",
+  "authors":[
+    {
+      "name":"Oveleon",
+      "homepage":"https://oveleon.de/",
+      "role":"Developer"
+    }
+  ],
+  "require":{
+    "isotope/isotope-core":"^2.6"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.0"
+  },
+  "conflict": {
+    "contao/core": "*",
+    "contao/core-bundle": "4.4.1",
+    "contao/manager-plugin": "<2.0 || >=3.0"
+  },
+  "autoload":{
+    "psr-4": {
+      "Oveleon\\IsotopeProductLicenses\\": "src/"
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ],
+    "exclude-from-classmap": [
+      "src/Resources/contao/config/",
+      "src/Resources/contao/dca/",
+      "src/Resources/contao/languages/",
+      "src/Resources/contao/templates/"
+    ]
+  },
+  "extra":{
+    "contao-manager-plugin": "Oveleon\\IsotopeProductLicenses\\ContaoManager\\Plugin"
+  }
+}

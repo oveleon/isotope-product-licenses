@@ -1,0 +1,30 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/modules.php" source-language="en">
+    <body>
+      <trans-unit id="tl_license.title_legend">
+        <source>Title and product</source>
+      </trans-unit>
+      <trans-unit id="tl_license.license_legend">
+        <source>Licenses</source>
+      </trans-unit>
+      <trans-unit id="tl_license.title.0">
+        <source>Title</source>
+      </trans-unit>
+      <trans-unit id="tl_license.title.1">
+        <source>Enter a title for this license.</source>
+      </trans-unit>
+      <trans-unit id="tl_license.product.0">
+        <source>Product ID</source>
+      </trans-unit>
+      <trans-unit id="tl_license.product.1">
+        <source>Here you can enter the ID of a product for which the licenses should be available.</source>
+      </trans-unit>
+      <trans-unit id="tl_license.validLicenses.0">
+        <source>Valid licenses</source>
+      </trans-unit>
+      <trans-unit id="tl_license.usedLicenses.0">
+        <source>Licenses in use.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

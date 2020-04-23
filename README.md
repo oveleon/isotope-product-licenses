@@ -6,4 +6,21 @@ The following insert tags are available:
 - `{{license_collection::*}}`
 - `{{license_product::*}}`
 
-* = Id of collection / product
+> \* = Id of collection / product
+
+### Example content of the e-mail:
+
+> Here are your ordered licenses 🎉\
+> {{license_collection::##uniqid##}}
+
+##### Result:
+
+> Here are your ordered licenses 🎉\
+> Produkt 1: ABCD-EFGH-IJKL-QRST-MNOP\
+> Produkt 2: EFGH-ABCD-MNOP-QRST-IJKL\
+> Produkt 3: IJKL-ABCD-EFGH-MNOP-QRST
+
+### Todo´s
+- Error handling, should no more licenses be available
+- (Define licenses directly in the product itself)
+

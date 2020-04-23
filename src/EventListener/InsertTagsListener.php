@@ -25,7 +25,7 @@ class InsertTagsListener
 {
     private const SUPPORTED_TAGS = [
         'license_product',
-        'license_card'
+        'license_collection'
     ];
 
     /**
@@ -75,7 +75,7 @@ class InsertTagsListener
         $arrProductIds = [];
         $arrProductLicenses = [];
 
-        if($insertTag === 'license_card')
+        if($insertTag === 'license_collection')
         {
             $productsInCollection = ProductCollectionItem::findBy(['pid=?'], $intId, array());
 

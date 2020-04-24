@@ -19,8 +19,3 @@ The following insert tags are available:
 > Produkt 1: ABCD-EFGH-IJKL-QRST-MNOP\
 > Produkt 2: EFGH-ABCD-MNOP-QRST-IJKL\
 > Produkt 3: IJKL-ABCD-EFGH-MNOP-QRST
-
-### Todo´s
-- Error handling, should no more licenses be available
-- (Define licenses directly in the product itself)
-

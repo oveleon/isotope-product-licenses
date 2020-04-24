@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of Oveleon company bundle.
+ * This file is part of Oveleon Isotope Product License.
  *
  * (c) https://www.oveleon.de/
  */

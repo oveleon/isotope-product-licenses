@@ -8,6 +8,9 @@
 
 namespace Oveleon\IsotopeProductLicenses;
 
+use Contao\CoreBundle\Monolog\ContaoContext;
+use Psr\Log\LogLevel;
+
 class LicenseHandler
 {
     /**
@@ -24,27 +27,37 @@ class LicenseHandler
             $product = LicenseModel::findOneByProduct($product);
         }
 
+        $logger = \System::getContainer()->get('monolog.logger.contao');
+
         if($product !== null)
         {
-            $arrValidLicenses = array_filter(\StringUtil::deserialize($product->validLicenses));
-            $arrUsedLicenses  = array_filter(\StringUtil::deserialize($product->usedLicenses));
+            $arrValidLicenses = array_filter(\StringUtil::deserialize($product->listitems, true));
+            $arrUsedLicenses  = array_filter(\StringUtil::deserialize($product->useditems, true));
 
-            if(empty($arrValidLicenses))
+            // ToDo: The number from when the warning is to be output should come from a configuration.
+            // ToDo: Send a warning e-mail to the administrator
+            if(count($arrValidLicenses) < 10 && !empty($arrValidLicenses))
             {
-                return 'NO MORE LICENSES';
+                $logger->log(LogLevel::WARNING, sprintf($GLOBALS['TL_LANG']['ERR']['lowNumberOfLicenses'], $product->product), array('contao' => new ContaoContext('getNextLicense', 'WARNING')));
+            }
+            elseif(empty($arrValidLicenses))
+            {
+                $logger->log(LogLevel::ERROR, sprintf($GLOBALS['TL_LANG']['ERR']['noMoreLicenses'], $product->product), array('contao' => new ContaoContext('getNextLicense', 'ERROR')));
+                return '';
             }
 
             $strNewLicense = array_shift($arrValidLicenses);
             $arrUsedLicenses[] = $strNewLicense;
 
-            $product->validLicenses = serialize($arrValidLicenses);
-            $product->usedLicenses = serialize($arrUsedLicenses);
+            $product->listitems = serialize($arrValidLicenses);
+            $product->useditems = serialize($arrUsedLicenses);
 
             $product->save();
 
             return $strNewLicense;
         }
 
-        return 'LICENSE NOT FOUND';
+        $logger->log(LogLevel::ERROR, $GLOBALS['TL_LANG']['ERR']['noLicenseFound'], array('contao' => new ContaoContext('getNextLicense', 'ERROR')));
+        return '';
     }
 }

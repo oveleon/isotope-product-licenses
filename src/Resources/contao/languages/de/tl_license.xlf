@@ -25,11 +25,11 @@
         <source>Here you can enter the ID of a product for which the licenses should be available.</source>
         <target>Hier kannst du die ID eines Produktes eintragen, für das die Lizenzen gelten sollen.</target>
       </trans-unit>
-      <trans-unit id="tl_license.validLicenses.0">
+      <trans-unit id="tl_license.listitems.0">
         <source>Valid licenses</source>
         <target>Gültige Lizenzen</target>
       </trans-unit>
-      <trans-unit id="tl_license.usedLicenses.0">
+      <trans-unit id="tl_license.useditems.0">
         <source>Licenses in use.</source>
         <target>Bereits verwendete Lizenzen.</target>
       </trans-unit>

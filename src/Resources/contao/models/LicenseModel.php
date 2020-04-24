@@ -1,11 +1,9 @@
 <?php
 
 /*
- * This file is part of Contao.
+ * This file is part of Oveleon Isotope Product License.
  *
- * (c) Leo Feyer
- *
- * @license LGPL-3.0-or-later
+ * (c) https://www.oveleon.de/
  */
 
 namespace Oveleon\IsotopeProductLicenses;
@@ -16,8 +14,8 @@ namespace Oveleon\IsotopeProductLicenses;
  * @property integer $id
  * @property string  $title
  * @property string  $product
- * @property string  $validLicenses
- * @property string  $usedLicenses
+ * @property string  $listitems
+ * @property string  $useditems
  *
  * @method static LicenseModel|null findById($id, array $opt=array())
  * @method static LicenseModel|null findByPk($id, array $opt=array())

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="ERR.noMoreLicenses">
+        <source>Licences for the product "%s" is exhausted</source>
+        <target>Lizenzen für das Produkt "%s" sind ausgeschöpft</target>
+      </trans-unit>
+      <trans-unit id="ERR.noLicenseFound">
+        <source>No license could be found for the referenced product</source>
+        <target>Für das referenzierte Produkt konnte keine Lizenz gefunden werden</target>
+      </trans-unit>
+      <trans-unit id="ERR.lowNumberOfLicenses">
+        <source>Only a few licenses left for product "%s"</source>
+        <target>Nur noch wenige Lizenzen für Produkt "%s"</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

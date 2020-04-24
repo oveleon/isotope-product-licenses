@@ -1,13 +1,10 @@
 <?php
 
 /*
- * This file is part of Contao.
+ * This file is part of Oveleon Isotope Product License.
  *
- * (c) Leo Feyer
- *
- * @license LGPL-3.0-or-later
+ * (c) https://www.oveleon.de/
  */
-
 $GLOBALS['TL_DCA']['tl_license'] = array
 (
 	// Config
@@ -77,7 +74,7 @@ $GLOBALS['TL_DCA']['tl_license'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},title,product;{license_legend},validLicenses,usedLicenses',
+		'default'                     => '{title_legend},title,product;{license_legend},listitems,useditems',
 	),
 
 	// Fields
@@ -106,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_license'] = array
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
-		'validLicenses' => array
+		'listitems' => array
 		(
 			'inputType'               => 'listWizard',
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
@@ -116,14 +113,10 @@ $GLOBALS['TL_DCA']['tl_license'] = array
             ),
             'sql'                     => "blob NULL"
 		),
-		'usedLicenses' => array
+		'useditems' => array
 		(
 			'inputType'               => 'listWizard',
 			'eval'                    => array('tl_class'=>'w50 clr'),
-            'xlabel' => array
-            (
-                array('tl_license', 'listImportWizard')
-            ),
             'sql'                     => "blob NULL"
 		),
 	)

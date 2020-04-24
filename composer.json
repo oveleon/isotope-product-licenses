@@ -13,6 +13,8 @@
     }
   ],
   "require":{
+    "php":"^7.1",
+    "contao/core-bundle":"^4.4",
     "isotope/isotope-core":"^2.6"
   },
   "require-dev": {

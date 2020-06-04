@@ -81,7 +81,10 @@ class InsertTagsListener
 
             while($productsInCollection->next())
             {
-                $arrProductIds[] = $productsInCollection->product_id;
+                for($i=0; $i<$productsInCollection->quantity; $i++)
+                {
+                    $arrProductIds[] = $productsInCollection->product_id;
+                }
             }
         }else{
             $arrProductIds[] = $intId;
@@ -89,11 +92,12 @@ class InsertTagsListener
 
         foreach ($arrProductIds as $productId)
         {
-            $product = LicenseModel::findOneByProduct($productId);
+            $objLicences = LicenseModel::findOneByProduct($productId);
 
-            $newLicense = LicenseHandler::getNextLicense($product);
-
-            $arrProductLicenses[] = sprintf("%s: %s", $product->title, $newLicense);
+            if($newLicence = LicenseHandler::getNextLicense($objLicences))
+            {
+                $arrProductLicenses[] = sprintf("%s: %s", $objLicences->title, $newLicence);
+            }
         }
 
         return implode("\n", $arrProductLicenses);

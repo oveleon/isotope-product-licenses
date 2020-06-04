@@ -5,10 +5,10 @@
         <source>Licences for the product "%s" is exhausted</source>
       </trans-unit>
       <trans-unit id="ERR.noLicenseFound">
-        <source>No license could be found for the referenced product</source>
+        <source>No license could be found for the product "%s"</source>
       </trans-unit>
       <trans-unit id="ERR.lowNumberOfLicenses">
-        <source>Only a few licenses left for product "%s"</source>
+        <source>Only "%s" licenses left for product "%s"</source>
       </trans-unit>
     </body>
   </file>

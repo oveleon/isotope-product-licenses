@@ -9,6 +9,8 @@
 namespace Oveleon\IsotopeProductLicenses;
 
 use Contao\CoreBundle\Monolog\ContaoContext;
+use Contao\FrontendUser;
+use Contao\System;
 use Psr\Log\LogLevel;
 
 class LicenseHandler
@@ -16,48 +18,52 @@ class LicenseHandler
     /**
      * Generate and return the next valid license of a product
      *
-     * @param int|object $product
+     * @param int|object $varProductLicence
      *
      * @return string
      */
-    public static function getNextLicense($product)
+    public static function getNextLicense($varProductLicence)
     {
-        if(is_int($product))
-        {
-            $product = LicenseModel::findOneByProduct($product);
-        }
-
         $logger = \System::getContainer()->get('monolog.logger.contao');
 
-        if($product !== null)
+        if(is_int($varProductLicence))
         {
-            $arrValidLicenses = array_filter(\StringUtil::deserialize($product->listitems, true));
-            $arrUsedLicenses  = array_filter(\StringUtil::deserialize($product->useditems, true));
+            $varProductLicence = LicenseModel::findOneByProduct($varProductLicence);
+        }
 
-            // ToDo: The number from when the warning is to be output should come from a configuration.
-            // ToDo: Send a warning e-mail to the administrator
-            if(count($arrValidLicenses) < 10 && !empty($arrValidLicenses))
+        $objLicence = LicenseItemModel::findBy(['pid=?', 'published=?'], [$varProductLicence->id, 0]);
+
+        if($objLicence !== null)
+        {
+            $intCount = $objLicence->count();
+
+            // Warning when licences are almost exhausted
+            if($intCount < 10)
             {
-                $logger->log(LogLevel::WARNING, sprintf($GLOBALS['TL_LANG']['ERR']['lowNumberOfLicenses'], $product->product), array('contao' => new ContaoContext('getNextLicense', 'WARNING')));
+                $logger->log(LogLevel::WARNING, sprintf($GLOBALS['TL_LANG']['ERR']['lowNumberOfLicenses'], $intCount, $varProductLicence->product), array('contao' => new ContaoContext('getNextLicense', 'WARNING')));
             }
-            elseif(empty($arrValidLicenses))
+            // Warning when licences are exhausted
+            elseif($intCount === 0)
             {
-                $logger->log(LogLevel::ERROR, sprintf($GLOBALS['TL_LANG']['ERR']['noMoreLicenses'], $product->product), array('contao' => new ContaoContext('getNextLicense', 'ERROR')));
+                $logger->log(LogLevel::ERROR, sprintf($GLOBALS['TL_LANG']['ERR']['noMoreLicenses'], $varProductLicence->product), array('contao' => new ContaoContext('getNextLicense', 'ERROR')));
                 return '';
             }
 
-            $strNewLicense = array_shift($arrValidLicenses);
-            $arrUsedLicenses[] = $strNewLicense;
+            $objUser = System::importStatic(FrontendUser::class, 'Member');
 
-            $product->listitems = serialize($arrValidLicenses);
-            $product->useditems = serialize($arrUsedLicenses);
+            if(FE_USER_LOGGED_IN)
+            {
+                $objLicence->member = $objUser->id;
+            }
 
-            $product->save();
+            $objLicence->published = 1;
+            $objLicence->save();
 
-            return $strNewLicense;
+            return $objLicence->licence;
         }
 
-        $logger->log(LogLevel::ERROR, $GLOBALS['TL_LANG']['ERR']['noLicenseFound'], array('contao' => new ContaoContext('getNextLicense', 'ERROR')));
+        $logger->log(LogLevel::ERROR, sprintf($GLOBALS['TL_LANG']['ERR']['noLicenseFound'], $varProductLicence->product), array('contao' => new ContaoContext('getNextLicense', 'ERROR')));
+
         return '';
     }
 }

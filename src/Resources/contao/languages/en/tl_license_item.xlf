@@ -1,0 +1,27 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_license_item.php" source-language="en">
+    <body>
+      <trans-unit id="tl_license_item.licence_legend">
+        <source>Licence</source>
+      </trans-unit>
+      <trans-unit id="tl_license_item.publish_legend">
+        <source>Valid</source>
+      </trans-unit>
+      <trans-unit id="tl_license_item.licence.0">
+        <source>Licence</source>
+      </trans-unit>
+      <trans-unit id="tl_license_item.licence.1">
+        <source>Enter a licence.</source>
+      </trans-unit>
+      <trans-unit id="tl_license_item.member.0">
+        <source>Member</source>
+      </trans-unit>
+      <trans-unit id="tl_license_item.member.1">
+        <source>Here you can select a member to whom this license is assigned.</source>
+      </trans-unit>
+      <trans-unit id="tl_license_item.published.0">
+        <source>Valid / Not used</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -6,12 +6,12 @@
         <target>Lizenzen für das Produkt "%s" sind ausgeschöpft</target>
       </trans-unit>
       <trans-unit id="ERR.noLicenseFound">
-        <source>No license could be found for the referenced product</source>
-        <target>Für das referenzierte Produkt konnte keine Lizenz gefunden werden</target>
+        <source>No license could be found for the product "%s"</source>
+        <target>Für das Produkt "%s" konnte keine Lizenz gefunden werden</target>
       </trans-unit>
       <trans-unit id="ERR.lowNumberOfLicenses">
-        <source>Only a few licenses left for product "%s"</source>
-        <target>Nur noch wenige Lizenzen für Produkt "%s"</target>
+        <source>Only "%s" licenses left for product "%s"</source>
+        <target>Nur noch "%s" Lizenzen für Produkt "%s"</target>
       </trans-unit>
     </body>
   </file>

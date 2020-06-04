@@ -11,7 +11,9 @@ $GLOBALS['TL_DCA']['tl_license'] = array
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
-		'enableVersioning'            => true,
+        'ctable'                      => array('tl_license_item'),
+        'notCopyable'                 => true,
+        'enableVersioning'            => true,
 		'sql' => array
 		(
 			'keys' => array
@@ -47,16 +49,16 @@ $GLOBALS['TL_DCA']['tl_license'] = array
 		),
 		'operations' => array
 		(
-			'edit' => array
-			(
-				'href'                => 'act=edit',
-				'icon'                => 'edit.svg'
-			),
-			'copy' => array
-			(
-				'href'                => 'act=copy',
-				'icon'                => 'copy.svg'
-			),
+            'edit' => array
+            (
+                'href'                => 'table=tl_license_item',
+                'icon'                => 'edit.svg',
+            ),
+            'editheader' => array
+            (
+                'href'                => 'act=edit',
+                'icon'                => 'header.svg',
+            ),
 			'delete' => array
 			(
 				'href'                => 'act=delete',
@@ -74,7 +76,7 @@ $GLOBALS['TL_DCA']['tl_license'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},title,product;{license_legend},listitems,useditems',
+		'default'                     => '{title_legend},title,product',
 	),
 
 	// Fields
@@ -102,49 +104,6 @@ $GLOBALS['TL_DCA']['tl_license'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
-		),
-		'listitems' => array
-		(
-			'inputType'               => 'listWizard',
-			'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 clr'),
-            'xlabel' => array
-            (
-                array('tl_license', 'listImportWizard')
-            ),
-            'sql'                     => "blob NULL"
-		),
-		'useditems' => array
-		(
-			'inputType'               => 'listWizard',
-			'eval'                    => array('tl_class'=>'w50 clr'),
-            'sql'                     => "blob NULL"
-		),
+		)
 	)
 );
-
-/**
- * Provide miscellaneous methods that are used by the data configuration array.
- *
- * @author Daniele Sciannimanica <https://github.com/doishub>
- */
-class tl_license extends Contao\Backend
-{
-	/**
-	 * Import the back end user object
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-		$this->import('Contao\BackendUser', 'User');
-	}
-
-    /**
-     * Add a link to the list items import wizard
-     *
-     * @return string
-     */
-    public function listImportWizard()
-    {
-        return ' <a href="' . $this->addToUrl('key=list') . '" title="' . Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['lw_import'][1]) . '" onclick="Backend.getScrollOffset()">' . Contao\Image::getHtml('tablewizard.svg', $GLOBALS['TL_LANG']['MSC']['tw_import'][0]) . '</a>';
-    }
-}

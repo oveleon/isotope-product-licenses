@@ -1,0 +1,38 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_license_item.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_license_item.licence_legend">
+        <source>Licence</source>
+        <target>Lizenz</target>
+      </trans-unit>
+      <trans-unit id="tl_license_item.publish_legend">
+        <source>Valid</source>
+        <target>Gültigkeit</target>
+      </trans-unit>
+      <trans-unit id="tl_license_item.licence.0">
+        <source>Licence</source>
+        <target>Lizenz</target>
+      </trans-unit>
+      <trans-unit id="tl_license_item.licence.1">
+        <source>Enter a licence.</source>
+        <target>Geben Sie eine Lizenz ein.</target>
+      </trans-unit>
+      <trans-unit id="tl_license_item.member.0">
+        <source>Member</source>
+        <target>Mitglied</target>
+      </trans-unit>
+      <trans-unit id="tl_license_item.member.1">
+        <source>Here you can select a member to whom this license is assigned.</source>
+        <target>Hier kannst du ein Mitglied auswählen, welchem diese Lizenz zugewiesen ist.</target>
+      </trans-unit>
+      <trans-unit id="tl_license_item.published.0">
+        <source>In use</source>
+        <target>Vergeben</target>
+      </trans-unit>
+      <trans-unit id="tl_license_item.published.1">
+        <source>Please select whether the license has already been assigned.</source>
+        <target>Bitte wählen Sie, ob die Lizenz bereits vergeben wurde.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

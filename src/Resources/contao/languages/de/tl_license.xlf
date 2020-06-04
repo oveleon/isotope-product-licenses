@@ -1,13 +1,9 @@
 <?xml version="1.0" ?><xliff version="1.1">
-  <file datatype="php" original="src/Resources/contao/languages/en/modules.php" source-language="en" target-language="de">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_license.php" source-language="en" target-language="de">
     <body>
       <trans-unit id="tl_license.title_legend">
         <source>Title and product</source>
         <target>Titel und Produkt</target>
-      </trans-unit>
-      <trans-unit id="tl_license.license_legend">
-        <source>Licenses</source>
-        <target>Lizenzen</target>
       </trans-unit>
       <trans-unit id="tl_license.title.0">
         <source>Title</source>
@@ -24,14 +20,6 @@
       <trans-unit id="tl_license.product.1">
         <source>Here you can enter the ID of a product for which the licenses should be available.</source>
         <target>Hier kannst du die ID eines Produktes eintragen, für das die Lizenzen gelten sollen.</target>
-      </trans-unit>
-      <trans-unit id="tl_license.listitems.0">
-        <source>Valid licenses</source>
-        <target>Gültige Lizenzen</target>
-      </trans-unit>
-      <trans-unit id="tl_license.useditems.0">
-        <source>Licenses in use.</source>
-        <target>Bereits verwendete Lizenzen.</target>
       </trans-unit>
     </body>
   </file>

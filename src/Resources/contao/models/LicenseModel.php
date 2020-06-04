@@ -9,13 +9,11 @@
 namespace Oveleon\IsotopeProductLicenses;
 
 /**
- * Reads and writes members
+ * Reads and writes licences
  *
  * @property integer $id
  * @property string  $title
  * @property string  $product
- * @property string  $listitems
- * @property string  $useditems
  *
  * @method static LicenseModel|null findById($id, array $opt=array())
  * @method static LicenseModel|null findByPk($id, array $opt=array())

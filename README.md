@@ -2,6 +2,8 @@
 
 This extension complements a license key management and its assignment to products which can then be picked up (via insert tags) and sent via the Notification Center.
 
+> If a member is logged in, this member will automatically be assigned the license key.
+
 The following insert tags are available:
 - `{{license_collection::*}}`
 - `{{license_product::*}}`

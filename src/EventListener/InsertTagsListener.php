@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Oveleon\IsotopeProductLicenses\EventListener;
 
 use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\Database;
 use Isotope\Model\ProductCollectionItem;
 
 use Oveleon\IsotopeProductLicenses\LicenseModel;
@@ -79,22 +80,26 @@ class InsertTagsListener
         {
             $productsInCollection = ProductCollectionItem::findBy(['pid=?'], $intId, array());
 
+            $objMember = Database::getInstance()->prepare("SELECT member FROM tl_iso_product_collection WHERE id=?")->limit(1)->execute($intId);
+            $intMember = $objMember->member ?: null;
+
             while($productsInCollection->next())
             {
                 for($i=0; $i<$productsInCollection->quantity; $i++)
                 {
-                    $arrProductIds[] = $productsInCollection->product_id;
+                    $arrProductIds[] = [$productsInCollection->product_id, $intMember];
                 }
             }
         }else{
-            $arrProductIds[] = $intId;
+            $arrProductIds[] = [$intId, null];
         }
 
-        foreach ($arrProductIds as $productId)
+        foreach ($arrProductIds as $product)
         {
+            list($productId, $memberId) = $product;
             $objLicences = LicenseModel::findOneByProduct($productId);
 
-            if($newLicence = LicenseHandler::getNextLicense($objLicences))
+            if($newLicence = LicenseHandler::getNextLicense($objLicences, $memberId))
             {
                 $arrProductLicenses[] = sprintf("%s: %s", $objLicences->title, $newLicence);
             }

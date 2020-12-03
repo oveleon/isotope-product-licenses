@@ -127,7 +127,7 @@ $GLOBALS['TL_DCA']['tl_license_item'] = array
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('doNotCopy'=>true, 'submitOnChange' => true),
-            'sql'                     => "char(1) NOT NULL default ''"
+            'sql'                     => "char(1) NOT NULL default '0'"
         )
 	)
 );

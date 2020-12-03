@@ -13,7 +13,7 @@ The following insert tags are available:
 ### Example content of the e-mail:
 
 > Here are your ordered licenses 🎉\
-> {{license_collection::##uniqid##}}
+> {{license_collection::##order_id##}}
 
 ##### Result:
 

@@ -3,6 +3,8 @@
 This extension complements a license key management and its assignment to products which can then be picked up (via insert tags) and sent via the Notification Center.
 
 > If a member is logged in, this member will automatically be assigned the license key.
+>
+>When using "license_collection", it is also checked whether the member can be determined from the order record, so that licenses can be sent later and the member can be assigned to it. Furthermore, the order ID is stored in the license.
 
 The following insert tags are available:
 - `{{license_collection::*}}`

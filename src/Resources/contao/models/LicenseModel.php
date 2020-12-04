@@ -8,6 +8,8 @@
 
 namespace Oveleon\IsotopeProductLicenses;
 
+use Contao\Model;
+
 /**
  * Reads and writes licences
  *
@@ -27,7 +29,7 @@ namespace Oveleon\IsotopeProductLicenses;
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class LicenseModel extends \Model
+class LicenseModel extends Model
 {
 	/**
 	 * Table name

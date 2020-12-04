@@ -19,11 +19,12 @@ class LicenseHandler
      * Generate and return the next valid license of a product
      *
      * @param int|object $varProductLicence
-     * @param int|null  $intMemberId
+     * @param int|null $intMemberId
+     * @param int|null $intOrderId
      *
      * @return string
      */
-    public static function getNextLicense($varProductLicence, $intMemberId)
+    public static function getNextLicense($varProductLicence, $intMemberId = null, $intOrderId = null)
     {
         $logger = \System::getContainer()->get('monolog.logger.contao');
 
@@ -59,6 +60,11 @@ class LicenseHandler
             elseif($intMemberId)
             {
                 $objLicence->member = $intMemberId;
+            }
+
+            if($intOrderId)
+            {
+                $objLicence->order = $intOrderId;
             }
 
             $objLicence->published = 1;

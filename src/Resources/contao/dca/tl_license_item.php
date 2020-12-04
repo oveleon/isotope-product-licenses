@@ -87,7 +87,7 @@ $GLOBALS['TL_DCA']['tl_license_item'] = array
 	// Subpalettes
 	'subpalettes' => array
 	(
-		'published'                     => 'member',
+		'published'                     => 'member,order',
 	),
 
 	// Fields
@@ -121,6 +121,12 @@ $GLOBALS['TL_DCA']['tl_license_item'] = array
             'foreignKey'              => 'tl_member.CONCAT(firstname," ",lastname)',
             'eval'                    => array('chosen'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default 0",
+        ),
+        'order' => array
+        (
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "int(10) unsigned NOT NULL default 0"
         ),
         'published' => array
         (

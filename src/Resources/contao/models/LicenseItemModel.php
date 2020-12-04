@@ -8,6 +8,8 @@
 
 namespace Oveleon\IsotopeProductLicenses;
 
+use Contao\Model;
+
 /**
  * Reads and writes licence items
  *
@@ -15,6 +17,7 @@ namespace Oveleon\IsotopeProductLicenses;
  * @property integer $pid
  * @property string  $licence
  * @property integer $member
+ * @property integer $order
  * @property string  $published
  *
  * @method static LicenseItemModel|null findById($id, array $opt=array())
@@ -23,6 +26,7 @@ namespace Oveleon\IsotopeProductLicenses;
  * @method static LicenseItemModel|null findOneByPid($val, array $opt=array())
  * @method static LicenseItemModel|null findOneByLicence($val, array $opt=array())
  * @method static LicenseItemModel|null findOneByMember($val, array $opt=array())
+ * @method static LicenseItemModel|null findOneByOrder($val, array $opt=array())
  * @method static LicenseItemModel|null findOneByPublished($val, array $opt=array())
  *
  * @method static Collection|LicenseItemModel[]|LicenseItemModel|null findByPid($val, array $opt=array())
@@ -31,6 +35,7 @@ namespace Oveleon\IsotopeProductLicenses;
  * @method static Collection|LicenseItemModel[]|LicenseItemModel|null findBy($col, $val, array $opt=array())
  * @method static Collection|LicenseItemModel[]|LicenseItemModel|null findByLicence($val, array $opt=array())
  * @method static Collection|LicenseItemModel[]|LicenseItemModel|null findByMember($val, array $opt=array())
+ * @method static Collection|LicenseItemModel[]|LicenseItemModel|null findByOrder($val, array $opt=array())
  * @method static Collection|LicenseItemModel[]|LicenseItemModel|null findByPublished($val, array $opt=array())
  * @method static Collection|LicenseItemModel[]|LicenseItemModel|null findAll(array $opt=array())
  *
@@ -43,7 +48,7 @@ namespace Oveleon\IsotopeProductLicenses;
  *
  * @author Daniele Sciannimanica <https://github.com/doishub>
  */
-class LicenseItemModel extends \Model
+class LicenseItemModel extends Model
 {
 	/**
 	 * Table name

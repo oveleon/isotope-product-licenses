@@ -5,6 +5,14 @@
         <source>Product licences</source>
         <target>Produkt-Lizenzen</target>
       </trans-unit>
+      <trans-unit id="FMD.orderLicenses.0">
+        <source>Ordered-Licenses</source>
+        <target>Bestellte Lizenzen</target>
+      </trans-unit>
+      <trans-unit id="FMD.orderLicenses.1">
+        <source>Displays the ordered licenses in the order overview.</source>
+        <target>Gibt die Bestellten Lizenzen in der Bestellübersicht aus.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

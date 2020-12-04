@@ -1,0 +1,18 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <?php if($this->products): ?>
+    <?php foreach ($this->products as $pid => $product):?>
+      <div class="product-item">
+          <div class="product-label"><?= $product['label'] ?></div>
+          <ul>
+          <?php foreach ($product['licenses'] as $license): ?>
+            <li class="license-item"><?= $license ?></li>
+          <?php endforeach; ?>
+          </ul>
+      </div>
+    <?php endforeach; ?>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

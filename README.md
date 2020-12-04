@@ -12,6 +12,11 @@ The following insert tags are available:
 
 > \* = Id of collection / product
 
+### Module:
+With the module Ordered-Licenses the booked licenses can be displayed in the order confirmation.
+
+> To determine the current order and its licenses, the GET parameter "uid" must be in the URL. This is the case on the order confirmation page, for example. It would look something like this: "complete.html?uid=550af3fe73763"
+
 ### Example content of the e-mail:
 
 > Here are your ordered licenses 🎉\

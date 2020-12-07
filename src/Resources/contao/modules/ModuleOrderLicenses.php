@@ -7,8 +7,10 @@
 
 namespace Oveleon\IsotopeProductLicenses;
 
+use Contao\BackendTemplate;
 use Contao\Input;
 use Contao\Module;
+use Contao\System;
 use Isotope\Model\ProductCollection\Order;
 
 class ModuleOrderLicenses extends Module
@@ -20,15 +22,45 @@ class ModuleOrderLicenses extends Module
     protected $strTemplate = 'mod_orderLicenses';
 
     /**
+     * ProductCollection
+     * @var null
+     */
+    protected $objOrder = null;
+
+    /**
+     * Display a wildcard in the back end
+     *
+     * @return string
+     */
+    public function generate()
+    {
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+        if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
+        {
+            $objTemplate = new BackendTemplate('be_wildcard');
+            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['orderLicenses'][0]) . ' ###';
+            $objTemplate->title = $this->headline;
+            $objTemplate->id = $this->id;
+            $objTemplate->link = $this->name;
+            $objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
+
+            return $objTemplate->parse();
+        }
+
+        if (!Input::get('uid') || ($this->objOrder = Order::findOneBy('uniqid', Input::get('uid'))) === null) {
+            return '';
+        }
+
+        return parent::generate();
+    }
+
+    /**
      * Generate the content element
      */
     protected function compile()
     {
-        if (!Input::get('uid') || ($order = Order::findOneBy('uniqid', Input::get('uid'))) === null) {
-            return '';
-        }
-
-        $objLicenses = LicenseItemModel::findByOrder($order->id, ['order' => 'pid']);
+        $objLicenses = LicenseItemModel::findByOrder($this->objOrder->id, ['order' => 'pid']);
 
         if(null != $objLicenses)
         {

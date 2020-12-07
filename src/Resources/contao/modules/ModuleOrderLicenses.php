@@ -62,10 +62,10 @@ class ModuleOrderLicenses extends Module
     protected function compile()
     {
         $objLicenses = LicenseItemModel::findByOrder($this->objOrder->id, ['order' => 'pid']);
+        $arrProducts = null;
 
         if(null != $objLicenses)
         {
-            $arrProducts = [];
             $intCurrentProduct = 0;
 
             while($objLicenses->next())
@@ -84,6 +84,7 @@ class ModuleOrderLicenses extends Module
             }
         }
 
+        $this->Template->empty = $GLOBALS['TL_LANG']['MSC']['msgNoLicenses'];
         $this->Template->products = $arrProducts;
     }
 }

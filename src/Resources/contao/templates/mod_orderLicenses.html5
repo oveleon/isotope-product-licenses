@@ -13,6 +13,8 @@
           </ul>
       </div>
     <?php endforeach; ?>
+  <?php else: ?>
+    <p class="empty message"><?=$this->empty?></p>
   <?php endif; ?>
 
 <?php $this->endblock(); ?>

@@ -12,6 +12,7 @@ use Contao\Input;
 use Contao\Module;
 use Contao\System;
 use Isotope\Model\ProductCollection\Order;
+use Patchwork\Utf8;
 
 class ModuleOrderLicenses extends Module
 {

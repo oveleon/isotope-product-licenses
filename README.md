@@ -28,3 +28,5 @@ With the module Ordered-Licenses the booked licenses can be displayed in the ord
 > Produkt 1: ABCD-EFGH-IJKL-QRST-MNOP\
 > Produkt 2: EFGH-ABCD-MNOP-QRST-IJKL\
 > Produkt 3: IJKL-ABCD-EFGH-MNOP-QRST
+
+When using an insert tag, the licenses are delivered via the "iso_licenses_default" template by default. If a third parameter is specified, an own template can be used. (For example `{{license_collection::*::iso_licenses_mail}}`).

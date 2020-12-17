@@ -12,6 +12,7 @@ namespace Oveleon\IsotopeProductLicenses\EventListener;
 
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\Database;
+use Contao\FrontendTemplate;
 use Isotope\Model\ProductCollectionItem;
 
 use Oveleon\IsotopeProductLicenses\LicenseModel;
@@ -57,7 +58,7 @@ class InsertTagsListener
         $key = strtolower($elements[0]);
 
         if (\in_array($key, self::SUPPORTED_TAGS, true)) {
-            return $this->replaceLicenseInsertTags($key, $elements[1]);
+            return $this->replaceLicenseInsertTags($key, $elements[1], $elements[2]);
         }
 
         return false;
@@ -68,10 +69,11 @@ class InsertTagsListener
      *
      * @param string $insertTag
      * @param string $intId
+     * @param null $strTemplate
      *
      * @return string
      */
-    private function replaceLicenseInsertTags($insertTag, $intId)
+    private function replaceLicenseInsertTags($insertTag, $intId, $strTemplate = null)
     {
         $arrProductIds = [];
         $arrProductLicenses = [];
@@ -101,10 +103,21 @@ class InsertTagsListener
 
             if($newLicence = LicenseHandler::getNextLicense($objLicences, $memberId, $orderId))
             {
-                $arrProductLicenses[] = sprintf("%s: %s", $objLicences->title, $newLicence);
+                if(!isset($arrProductLicenses[$productId]))
+                {
+                    $arrProductLicenses[$productId] = array(
+                        'label' => $objLicences->title,
+                        'licenses' => []
+                    );
+                }
+
+                $arrProductLicenses[$productId]['licenses'][] = $newLicence;
             }
         }
 
-        return implode("\n", $arrProductLicenses);
+        $objTemplate = new FrontendTemplate($strTemplate ?: 'iso_licenses_default');
+        $objTemplate->items = $arrProductLicenses;
+
+        return $objTemplate->parse();
     }
 }

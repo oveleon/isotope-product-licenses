@@ -26,7 +26,7 @@ class LicenseHandler
      */
     public static function getNextLicense($varProductLicence, $intMemberId = null, $intOrderId = null)
     {
-        $logger = \System::getContainer()->get('monolog.logger.contao');
+        $logger = System::getContainer()->get('monolog.logger.contao');
 
         if(is_int($varProductLicence))
         {

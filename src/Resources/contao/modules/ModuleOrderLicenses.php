@@ -12,7 +12,6 @@ use Contao\Input;
 use Contao\Module;
 use Contao\System;
 use Isotope\Model\ProductCollection\Order;
-use Patchwork\Utf8;
 
 class ModuleOrderLicenses extends Module
 {
@@ -40,7 +39,7 @@ class ModuleOrderLicenses extends Module
         if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
         {
             $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['orderLicenses'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . ($GLOBALS['TL_LANG']['FMD']['orderLicenses'][0] ?? '') . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;

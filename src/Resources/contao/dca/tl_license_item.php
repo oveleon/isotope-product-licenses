@@ -133,7 +133,7 @@ $GLOBALS['TL_DCA']['tl_license_item'] = array
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('doNotCopy'=>true, 'submitOnChange' => true),
-            'sql'                     => "char(1) NOT NULL default '0'"
+            'sql'                     => "tinyint(1) NOT NULL default '0'",
         )
 	)
 );
@@ -185,18 +185,6 @@ class tl_license_item extends Contao\Backend
         if ($row['published'])
         {
             $icon = 'invisible.svg';
-        }
-
-        $objPage = Contao\PageModel::findById($row['pid']);
-
-        if (!$this->User->isAllowed(Contao\BackendUser::CAN_EDIT_ARTICLES, $objPage->row()))
-        {
-            if (!$row['published'])
-            {
-                $icon = preg_replace('/\.svg$/i', '_.svg', $icon); // see #8126
-            }
-
-            return Contao\Image::getHtml($icon) . ' ';
         }
 
         return '<a href="' . $this->addToUrl($href) . '" title="' . Contao\StringUtil::specialchars($title) . '"' . $attributes . '>' . Contao\Image::getHtml($icon, $label, 'data-state="' . (!$row['published'] ? 1 : 0) . '"') . '</a> ';
